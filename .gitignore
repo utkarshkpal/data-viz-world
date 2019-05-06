@@ -1,3 +1,5 @@
-node_nomules
 
+node_modules
+.nowignore
+next.config.js
 
