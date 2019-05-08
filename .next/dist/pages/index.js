@@ -44,6 +44,9 @@ var _store = require("../store");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = "/Users/utkarsh/Desktop/work/dresslife/tool-tip/with-redux-tooltip/pages/index.js?entry";
+
+
 var show = _reduxTooltip.actions.show,
     hide = _reduxTooltip.actions.hide;
 
@@ -73,8 +76,6 @@ var WithReduxExample = function (_Component) {
         _this.setState({ vtype: 'density' });
       }
     }, _this.getContent = function (name) {
-      console.log(name);
-
       var _this$state = _this.state,
           data = _this$state.data,
           vtype = _this$state.vtype;
@@ -93,7 +94,7 @@ var WithReduxExample = function (_Component) {
             population = _countryData$.population,
             area = _countryData$.area;
 
-        var areaInSqMiles = area * 0.621371;
+        var areaInSqMiles = area * 0.386102;
         var density = population / areaInSqMiles;
         if (vtype === 'density') {
           return density;
@@ -113,11 +114,14 @@ var WithReduxExample = function (_Component) {
     }, _this.getColor = function (name) {
       var vtype = _this.state.vtype;
 
+      var d = void 0;
       if (vtype == 'density') {
-        var d = _this.getContent(name);
+        d = _this.getContent(name);
         return d > 500 ? '#BD0026' : d > 200 ? '#E31A1C' : d > 100 ? '#FC4E2A' : d > 50 ? '#FD8D3C' : d > 20 ? '#FEB24C' : d > 10 ? '#FED976' : '#FFEDA0';
+      } else {
+        d = _this.getContent(name);
+        return d > 60 ? '#BD0026' : d > 55 ? '#CF372D' : d > 50 ? '#EA3F33' : d > 45 ? '#EB6263' : d > 40 ? '#F6CCCD' : d > 35 ? '#95F59A' : d > 30 ? '#7FF237' : d > 25 ? '#6CCF12' : '#FFFFFF';
       }
-      return 'black';
     }, _this.handleMove = function (geography, evt) {
 
       var x = evt.clientX;
@@ -153,7 +157,35 @@ var WithReduxExample = function (_Component) {
           data = _state.data,
           vtype = _state.vtype;
 
-      return _react2.default.createElement("div", null, vtype === 'density' ? _react2.default.createElement("h1", null, "Population Density") : _react2.default.createElement("h1", null, "Gini Coefficient"), _react2.default.createElement("div", { style: wrapperStyles }, _react2.default.createElement("div", { style: btnStyle, onClick: this.alterDataType }, "Button"), data.length ? _react2.default.createElement("div", null, _react2.default.createElement(_reactSimpleMaps.ComposableMap, {
+      return _react2.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 121
+        }
+      }, vtype === 'density' ? _react2.default.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122
+        }
+      }, "Population Density") : _react2.default.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 122
+        }
+      }, "Gini Coefficient"), _react2.default.createElement("div", { style: wrapperStyles, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 123
+        }
+      }, _react2.default.createElement("div", { style: btnStyle, onClick: this.alterDataType, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 124
+        }
+      }, "Button"), data.length ? _react2.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 126
+        }
+      }, _react2.default.createElement(_reactSimpleMaps.ComposableMap, {
         projectionConfig: {
           scale: 205,
           rotation: [-11, 0, 0]
@@ -163,7 +195,19 @@ var WithReduxExample = function (_Component) {
         style: {
           width: "100%",
           height: "auto"
-        } }, _react2.default.createElement(_reactSimpleMaps.ZoomableGroup, { center: [0, 20] }, _react2.default.createElement(_reactSimpleMaps.Geographies, { geography: "/static/world-50m-with-population.json" }, function (geographies, projection) {
+        }, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 127
+        }
+      }, _react2.default.createElement(_reactSimpleMaps.ZoomableGroup, { center: [0, 20], __source: {
+          fileName: _jsxFileName,
+          lineNumber: 139
+        }
+      }, _react2.default.createElement(_reactSimpleMaps.Geographies, { disableOptimization: "false", geography: "/static/world-50m-with-population.json", __source: {
+          fileName: _jsxFileName,
+          lineNumber: 141
+        }
+      }, function (geographies, projection) {
         return geographies.map(function (geography, i) {
           return _react2.default.createElement(_reactSimpleMaps.Geography, {
             key: i,
@@ -190,9 +234,41 @@ var WithReduxExample = function (_Component) {
                 strokeWidth: 0.75,
                 outline: "none"
               }
-            } });
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 142
+            }
+          });
         });
-      }))), vtype == 'density' ? _react2.default.createElement("div", null, " ", _react2.default.createElement("img", { style: imgStyle, className: "img", src: "/static/img.png" })) : null, _react2.default.createElement(_reduxTooltip.Tooltip, null)) : _react2.default.createElement("h1", null, "Loading...")));
+      }))), vtype == 'density' ? _react2.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 172
+        }
+      }, " ", _react2.default.createElement("img", { style: imgStyle, className: "img", src: "/static/img.png", alt: "gini", __source: {
+          fileName: _jsxFileName,
+          lineNumber: 172
+        }
+      })) : _react2.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 172
+        }
+      }, " ", _react2.default.createElement("img", { style: imgStyle, className: "img", src: "/static/gini.png", alt: "gini", __source: {
+          fileName: _jsxFileName,
+          lineNumber: 172
+        }
+      })), _react2.default.createElement(_reduxTooltip.Tooltip, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 173
+        }
+      })) : _react2.default.createElement("h1", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 174
+        }
+      }, "Loading...")));
     }
   }]);
 

@@ -36,7 +36,6 @@ class WithReduxExample extends Component {
   }
 
   getContent = (name) => {
-    console.log(name);
     
     const {data, vtype} = this.state;
     const countryData = data.filter((elem) => {
@@ -49,7 +48,7 @@ class WithReduxExample extends Component {
     });
     if (countryData[0]) {
       const {gini, population, area} = countryData[0];
-      const areaInSqMiles = area * 0.621371;
+      const areaInSqMiles = area * 0.386102;
       const density = population / areaInSqMiles;
       if (vtype === 'density') {
         return density;
@@ -71,8 +70,9 @@ class WithReduxExample extends Component {
   }
   getColor = (name) => {
     const {vtype} = this.state;
+    let d;
     if(vtype == 'density'){
-      let d  = this.getContent(name);
+       d  = this.getContent(name);
       return d > 500  ? '#BD0026' :
              d > 200  ? '#E31A1C' :
              d > 100  ? '#FC4E2A' :
@@ -80,8 +80,19 @@ class WithReduxExample extends Component {
              d > 20   ? '#FEB24C' :
              d > 10   ? '#FED976' :
                         '#FFEDA0';
+    }else {
+       d  = this.getContent(name);
+      return d > 60   ? '#BD0026' :
+             d > 55   ? '#CF372D' :
+             d > 50   ? '#EA3F33' :
+             d > 45   ? '#EB6263':
+             d > 40   ? '#F6CCCD':
+             d > 35   ? '#95F59A':
+             d > 30   ? '#7FF237':
+             d > 25   ? '#6CCF12':
+                       '#FFFFFF';
     }
-    return 'black'
+    
     
   }
 
@@ -127,7 +138,7 @@ class WithReduxExample extends Component {
 
           <ZoomableGroup center={[0, 20]}>
           
-            <Geographies geography="/static/world-50m-with-population.json">
+            <Geographies disableOptimization='false' geography="/static/world-50m-with-population.json">
               {(geographies, projection) => geographies.map((geography, i) => (<Geography
                 key={i}
                 geography={geography}
@@ -158,7 +169,7 @@ class WithReduxExample extends Component {
             </Geographies>
           </ZoomableGroup>
         </ComposableMap>
-       {vtype == 'density'?<div> <img style={imgStyle} className='img' src='/static/img.png'/></div>:null}
+       {vtype == 'density'?<div> <img style={imgStyle} className='img' src='/static/img.png' alt='gini'/></div>:<div> <img style={imgStyle} className='img' src='/static/gini.png' alt='gini'/></div>}
         <Tooltip/>
         </div> : <h1>Loading...</h1>
         }
