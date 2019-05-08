@@ -120,7 +120,7 @@ var WithReduxExample = function (_Component) {
         return d > 500 ? '#BD0026' : d > 200 ? '#E31A1C' : d > 100 ? '#FC4E2A' : d > 50 ? '#FD8D3C' : d > 20 ? '#FEB24C' : d > 10 ? '#FED976' : '#FFEDA0';
       } else {
         d = _this.getContent(name);
-        return d > 60 ? '#BD0026' : d > 55 ? '#CF372D' : d > 50 ? '#EA3F33' : d > 45 ? '#EB6263' : d > 40 ? '#F6CCCD' : d > 35 ? '#95F59A' : d > 30 ? '#7FF237' : d > 25 ? '#6CCF12' : '#FFFFFF';
+        return d > 60 ? '#BD0026' : d > 55 ? '#CF372D' : d > 50 ? '#EA3F33' : d > 45 ? '#EB6263' : d > 40 ? '#F6CCCD' : d > 35 ? '#95F59A' : d > 30 ? '#7FF237' : d > 25 ? '#6CCF12' : '#E6E6E6';
       }
     }, _this.handleMove = function (geography, evt) {
 

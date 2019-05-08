@@ -90,7 +90,7 @@ class WithReduxExample extends Component {
              d > 35   ? '#95F59A':
              d > 30   ? '#7FF237':
              d > 25   ? '#6CCF12':
-                       '#FFFFFF';
+                       '#E6E6E6';
     }
     
     
